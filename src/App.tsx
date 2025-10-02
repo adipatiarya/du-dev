@@ -4,35 +4,32 @@
  *
  * @format
  */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import {StyleSheet} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { Image, View, Text } from 'react-native';
 import {
   SafeAreaProvider,
-  useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
 
+function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppContent />
     </SafeAreaProvider>
   );
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsxd"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
+    <LinearGradient
+      style={styles.container}
+      colors={['rgb(248, 0, 0)', '#fff', '#FFF']}
+    >
+      <View style={styles.header}>
+       <Image source={require('./assets/images/Vector.png')} style={styles.header}/>;
+      </View>
+    </LinearGradient>
   );
 }
 
@@ -40,6 +37,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  header: {
+    height:168,
+    width:'auto',
+    backgroundColor:'transparent'
+  }
 });
 
 export default App;
